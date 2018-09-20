@@ -1,18 +1,25 @@
-
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Unicorn clicker</title>
+<script>
+function clickCounter() {
+    if(typeof(Storage) !== "undefined") {
+        if (localStorage.clickcount) {
+            localStorage.clickcount = Number(localStorage.clickcount)+1;
+        } else {
+            localStorage.clickcount = 1;
+        }
+        document.getElementById("result").innerHTML = "Du har fået en ekstra Unicorn du har så mange i alt " + localStorage.clickcount + " time(s).";
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+    }
+}
+</script>
 </head>
-
 <body>
-    <script type="text/javascript">
-    int clicks = 0;
-    function click() {
-        clicks += 1;
-        document.getElementById("clicks").innerHTML = clicks;
-    };
-    </script>
-    <button type="button" onClick="clicks()">+1 Unicorn</button>
-    <p>Clicks: <a id="clicks">0</a></p>
-
-</body></html>
+<p><button onclick="clickCounter()" type="button">Get a Free Unicorn</button></p>
+<div id="result"></div>
+<p>Click på knappen får at få en gratis Unicorn.</p>
+<p>Den rester ikke så kan godt lukke siden ned når læreren kommer.</p>
+</body>
+</html>
